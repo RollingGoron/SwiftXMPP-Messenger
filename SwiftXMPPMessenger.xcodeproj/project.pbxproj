@@ -15,6 +15,8 @@
 		F24B79091CED67BC00BF05B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F24B79081CED67BC00BF05B3 /* Assets.xcassets */; };
 		F24B790C1CED67BC00BF05B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24B790A1CED67BC00BF05B3 /* LaunchScreen.storyboard */; };
 		F24B79141CED6D0D00BF05B3 /* XMPPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B79131CED6D0C00BF05B3 /* XMPPManager.swift */; };
+		F2A966481CEED02700724CAA /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A966471CEED02700724CAA /* ChatController.swift */; };
+		F2A9664A1CEED34700724CAA /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A966491CEED34700724CAA /* UserListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		F24B790B1CED67BC00BF05B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F24B790D1CED67BC00BF05B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F24B79131CED6D0C00BF05B3 /* XMPPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMPPManager.swift; sourceTree = "<group>"; };
+		F2A966471CEED02700724CAA /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		F2A966491CEED34700724CAA /* UserListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				F24B78FE1CED67BC00BF05B3 /* AppDelegate.swift */,
+				F2A966471CEED02700724CAA /* ChatController.swift */,
+				F2A966491CEED34700724CAA /* UserListController.swift */,
 				F24B79001CED67BC00BF05B3 /* ViewController.swift */,
 				F24B79131CED6D0C00BF05B3 /* XMPPManager.swift */,
 				F24B79021CED67BC00BF05B3 /* Main.storyboard */,
@@ -216,9 +222,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2A9664A1CEED34700724CAA /* UserListController.swift in Sources */,
 				F24B79141CED6D0D00BF05B3 /* XMPPManager.swift in Sources */,
 				F24B79071CED67BC00BF05B3 /* SwiftXMPPMessenger.xcdatamodeld in Sources */,
 				F24B79011CED67BC00BF05B3 /* ViewController.swift in Sources */,
+				F2A966481CEED02700724CAA /* ChatController.swift in Sources */,
 				F24B78FF1CED67BC00BF05B3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

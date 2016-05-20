@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="340" y="261"/>
         </scene>
-        <!--View Controller-->
+        <!--User List Controller-->
         <scene sceneID="q5d-t2-2zS">
             <objects>
-                <viewController id="nHX-oU-0Sp" sceneMemberID="viewController">
+                <viewController id="nHX-oU-0Sp" customClass="UserListController" customModule="SwiftXMPPMessenger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="viM-iu-Mq6"/>
                         <viewControllerLayoutGuide type="bottom" id="HPg-zq-ANa"/>
@@ -86,12 +86,75 @@
                     <view key="view" contentMode="scaleToFill" id="yAe-fc-p8s">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YCf-d4-ANP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YCf-d4-ANP" firstAttribute="top" secondItem="yAe-fc-p8s" secondAttribute="top" id="0Pl-sq-gr4"/>
+                            <constraint firstItem="YCf-d4-ANP" firstAttribute="leading" secondItem="yAe-fc-p8s" secondAttribute="leading" id="HBl-Ge-s0j"/>
+                            <constraint firstItem="YCf-d4-ANP" firstAttribute="bottom" secondItem="HPg-zq-ANa" secondAttribute="top" id="ZXU-Tq-cLD"/>
+                            <constraint firstAttribute="trailing" secondItem="YCf-d4-ANP" secondAttribute="trailing" id="o5R-C4-ibg"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wut-5T-74u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="980" y="261"/>
+        </scene>
+        <!--Chat Controller-->
+        <scene sceneID="yuG-Mk-dCw">
+            <objects>
+                <viewController id="79h-v0-VjX" customClass="ChatController" customModule="SwiftXMPPMessenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vip-pg-RTd"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Ce-fW-lfE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QRc-UU-mrR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VUv-hc-KRx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVb-Vc-4gn">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" id="J7z-Sk-NxF"/>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsG-wp-VVs">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" id="Ytv-Tk-tbQ"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QsG-wp-VVs" firstAttribute="top" secondItem="VUv-hc-KRx" secondAttribute="bottom" id="8uL-bp-nJd"/>
+                            <constraint firstItem="rVb-Vc-4gn" firstAttribute="leading" secondItem="QsG-wp-VVs" secondAttribute="leading" id="CyK-bu-iDk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QsG-wp-VVs" secondAttribute="trailing" constant="-20" id="Eho-Po-ox5"/>
+                            <constraint firstItem="VUv-hc-KRx" firstAttribute="leading" secondItem="QRc-UU-mrR" secondAttribute="leading" id="Fs7-9p-xe2"/>
+                            <constraint firstItem="VUv-hc-KRx" firstAttribute="top" secondItem="QRc-UU-mrR" secondAttribute="top" id="IKh-UF-LEu"/>
+                            <constraint firstItem="QsG-wp-VVs" firstAttribute="leading" secondItem="QRc-UU-mrR" secondAttribute="leadingMargin" constant="-20" id="c8m-0a-vsS"/>
+                            <constraint firstItem="6Ce-fW-lfE" firstAttribute="top" secondItem="rVb-Vc-4gn" secondAttribute="bottom" id="d0g-Tr-XJs"/>
+                            <constraint firstItem="rVb-Vc-4gn" firstAttribute="trailing" secondItem="QsG-wp-VVs" secondAttribute="trailing" id="hPE-0a-4dy"/>
+                            <constraint firstItem="VUv-hc-KRx" firstAttribute="bottom" secondItem="6Ce-fW-lfE" secondAttribute="top" constant="-44" id="pDp-rq-rwV"/>
+                            <constraint firstAttribute="trailing" secondItem="VUv-hc-KRx" secondAttribute="trailing" id="yEy-ZZ-a1a"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="toolbarBottomConstraint" destination="d0g-Tr-XJs" id="jOA-Ez-N3J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aC4-VQ-wuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630" y="261"/>
         </scene>
     </scenes>
 </document>
