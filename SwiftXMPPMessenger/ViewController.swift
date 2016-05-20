@@ -10,11 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         XMPPManager.sharedInstance.setXMPPDelegates()
-        XMPPManager.sharedInstance.loginToXMPPServer("superoffroad@xmpp.jp", password: "Dookie86")
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +23,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func loginToXMPP(sender: AnyObject) {
+         XMPPManager.sharedInstance.loginToXMPPServer(usernameField.text!, password: passwordField.text!)
+    }
 
 }
 

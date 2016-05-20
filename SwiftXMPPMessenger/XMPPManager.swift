@@ -50,10 +50,22 @@ extension XMPPManager : XMPPStreamDelegate {
     
     func xmppStreamDidConnect(sender: XMPPStream!) {
         print("Stream did connect!")
+        do {
+            try xmppStream?.authenticateWithPassword(self.password)
+        } catch {
+            print("An error occured!")
+        }
     }
     
     func xmppStreamDidAuthenticate(sender: XMPPStream!) {
         print("The XMPP Authenticated")
+        let presence = XMPPPresence(type: "Available")
+        xmppStream?.sendElement(presence)
+    }
+    
+    func xmppStream(sender: XMPPStream!, didReceiveMessage message: XMPPMessage!) {
+        print("Recieved Message!")
+        print(message)
     }
 
 }
