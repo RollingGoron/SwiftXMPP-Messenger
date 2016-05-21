@@ -17,6 +17,8 @@
 		F24B79141CED6D0D00BF05B3 /* XMPPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B79131CED6D0C00BF05B3 /* XMPPManager.swift */; };
 		F2A966481CEED02700724CAA /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A966471CEED02700724CAA /* ChatController.swift */; };
 		F2A9664A1CEED34700724CAA /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A966491CEED34700724CAA /* UserListController.swift */; };
+		F2A9664C1CF0F47B00724CAA /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9664B1CF0F47B00724CAA /* MessageModel.swift */; };
+		F2A9664E1CF0F48900724CAA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9664D1CF0F48900724CAA /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		F24B79131CED6D0C00BF05B3 /* XMPPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMPPManager.swift; sourceTree = "<group>"; };
 		F2A966471CEED02700724CAA /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		F2A966491CEED34700724CAA /* UserListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
+		F2A9664B1CF0F47B00724CAA /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		F2A9664D1CF0F48900724CAA /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +92,9 @@
 			children = (
 				F24B78FE1CED67BC00BF05B3 /* AppDelegate.swift */,
 				F2A966471CEED02700724CAA /* ChatController.swift */,
+				F2A9664B1CF0F47B00724CAA /* MessageModel.swift */,
 				F2A966491CEED34700724CAA /* UserListController.swift */,
+				F2A9664D1CF0F48900724CAA /* UserModel.swift */,
 				F24B79001CED67BC00BF05B3 /* ViewController.swift */,
 				F24B79131CED6D0C00BF05B3 /* XMPPManager.swift */,
 				F24B79021CED67BC00BF05B3 /* Main.storyboard */,
@@ -224,6 +230,8 @@
 			files = (
 				F2A9664A1CEED34700724CAA /* UserListController.swift in Sources */,
 				F24B79141CED6D0D00BF05B3 /* XMPPManager.swift in Sources */,
+				F2A9664E1CF0F48900724CAA /* UserModel.swift in Sources */,
+				F2A9664C1CF0F47B00724CAA /* MessageModel.swift in Sources */,
 				F24B79071CED67BC00BF05B3 /* SwiftXMPPMessenger.xcdatamodeld in Sources */,
 				F24B79011CED67BC00BF05B3 /* ViewController.swift in Sources */,
 				F2A966481CEED02700724CAA /* ChatController.swift in Sources */,

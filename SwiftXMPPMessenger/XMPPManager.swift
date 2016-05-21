@@ -12,6 +12,12 @@ import XMPPFramework
 protocol XMPPManagerStreamDelegate {
     func didConnectToServer(bool : Bool, errorMessage : String?)
     func failedToAuthenticate(error : String)
+    func didRecieveMessage(message : MessageModel)
+    func didRecievePresenceFor(user : UserModel)
+}
+
+protocol XMPPManagerRosterProtocol {
+    func didRecieveBuddy(user : UserModel)
 }
 
 class XMPPManager: NSObject {
@@ -83,6 +89,9 @@ extension XMPPManager : XMPPStreamDelegate {
     }
     
     func xmppStream(sender: XMPPStream!, didReceiveMessage message: XMPPMessage!) {
+        
+        
+        
         print("Recieved Message!")
         print(message)
     }
