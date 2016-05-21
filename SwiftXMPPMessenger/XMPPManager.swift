@@ -9,11 +9,20 @@
 import UIKit
 import XMPPFramework
 
+protocol XMPPManagerStreamDelegate {
+    func didConnectToServer(bool : Bool, errorMessage : String?)
+    func failedToAuthenticate(error : String)
+}
+
 class XMPPManager: NSObject {
     
     static let sharedInstance = XMPPManager()
 
     var xmppStream : XMPPStream?
+    var xmppRoster : XMPPRoster?
+    var xmppRosterManager : XMPPRosterMemoryStorage?
+    
+    var xmppManagerStreamDelegate : XMPPManagerStreamDelegate?
     
     var userWithHost : String = ""
     var password : String = ""
@@ -21,6 +30,10 @@ class XMPPManager: NSObject {
     func setXMPPDelegates() {
         xmppStream = XMPPStream()
         xmppStream?.addDelegate(self, delegateQueue: dispatch_get_main_queue())
+        xmppRosterManager = XMPPRosterMemoryStorage()
+        xmppRoster = XMPPRoster(rosterStorage: xmppRosterManager, dispatchQueue: dispatch_get_main_queue())
+        xmppRoster?.addDelegate(self, delegateQueue: dispatch_get_main_queue())
+        xmppRoster?.activate(xmppStream)
     }
     
     func loginToXMPPServer(jid : String, password : String) {
@@ -61,11 +74,26 @@ extension XMPPManager : XMPPStreamDelegate {
         print("The XMPP Authenticated")
         let presence = XMPPPresence(type: "Available")
         xmppStream?.sendElement(presence)
+        xmppRoster?.fetchRoster()
+        xmppManagerStreamDelegate?.didConnectToServer(true, errorMessage: nil)
+    }
+    
+    func xmppStream(sender: XMPPStream!, didNotAuthenticate error: DDXMLElement!) {
+        xmppManagerStreamDelegate?.didConnectToServer(false, errorMessage: "Could not authenticate the account")
     }
     
     func xmppStream(sender: XMPPStream!, didReceiveMessage message: XMPPMessage!) {
         print("Recieved Message!")
         print(message)
     }
+}
 
+extension XMPPManager : XMPPRosterDelegate {
+    func xmppRoster(sender: XMPPRoster!, didReceiveRosterItem item: DDXMLElement!) {
+        print("Recieved Roster Item \(item)")
+    }
+    
+    func xmppRoster(sender: XMPPRoster!, didReceivePresenceSubscriptionRequest presence: XMPPPresence!) {
+        print("Recieved Subscription!")
+    }
 }

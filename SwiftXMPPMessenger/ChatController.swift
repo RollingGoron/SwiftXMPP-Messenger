@@ -11,6 +11,8 @@ import UIKit
 class ChatController: UIViewController {
 
     @IBOutlet weak var toolbarBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var chatTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,9 @@ class ChatController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func sendMessageAction(sender: AnyObject) {
+    }
+
 
     /*
     // MARK: - Navigation
