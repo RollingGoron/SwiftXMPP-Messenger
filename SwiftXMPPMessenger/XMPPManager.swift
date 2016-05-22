@@ -9,15 +9,19 @@
 import UIKit
 import XMPPFramework
 
-protocol XMPPManagerStreamDelegate {
+protocol XMPPManagerLoginDelegate {
     func didConnectToServer(bool : Bool, errorMessage : String?)
+}
+
+protocol XMPPManagerStreamDelegate {
     func failedToAuthenticate(error : String)
     func didRecieveMessage(message : MessageModel)
     func didRecievePresenceFor(user : UserModel)
 }
 
-protocol XMPPManagerRosterProtocol {
+protocol XMPPManagerRosterDelegate {
     func didRecieveBuddy(user : UserModel)
+    func addedBuddyToList(buddyList :[UserModel])
 }
 
 class XMPPManager: NSObject {
@@ -28,7 +32,11 @@ class XMPPManager: NSObject {
     var xmppRoster : XMPPRoster?
     var xmppRosterManager : XMPPRosterMemoryStorage?
     
+    var xmppManagerLoginDelegate : XMPPManagerLoginDelegate?
     var xmppManagerStreamDelegate : XMPPManagerStreamDelegate?
+    var xmppManagerRosterDelegate : XMPPManagerRosterDelegate?
+    
+    var userListArray = [UserModel]()
     
     var userWithHost : String = ""
     var password : String = ""
@@ -81,11 +89,11 @@ extension XMPPManager : XMPPStreamDelegate {
         let presence = XMPPPresence(type: "Available")
         xmppStream?.sendElement(presence)
         xmppRoster?.fetchRoster()
-        xmppManagerStreamDelegate?.didConnectToServer(true, errorMessage: nil)
+        xmppManagerLoginDelegate?.didConnectToServer(true, errorMessage: nil)
     }
     
     func xmppStream(sender: XMPPStream!, didNotAuthenticate error: DDXMLElement!) {
-        xmppManagerStreamDelegate?.didConnectToServer(false, errorMessage: "Could not authenticate the account")
+        xmppManagerLoginDelegate?.didConnectToServer(false, errorMessage: "Could not authenticate the account")
     }
     
     func xmppStream(sender: XMPPStream!, didReceiveMessage message: XMPPMessage!) {
@@ -99,6 +107,18 @@ extension XMPPManager : XMPPStreamDelegate {
 
 extension XMPPManager : XMPPRosterDelegate {
     func xmppRoster(sender: XMPPRoster!, didReceiveRosterItem item: DDXMLElement!) {
+        
+        let name = item.attributeForName("name").stringValue()
+        let jid = item.attributeForName("jid").stringValue()
+        
+        print("\(name), \(jid)")
+        
+        let userModel = UserModel(userJID: name, userNickName: jid, userState: UserState.Unavailable)
+        
+        userListArray.append(userModel)
+        
+        xmppManagerRosterDelegate?.addedBuddyToList(userListArray)
+        
         print("Recieved Roster Item \(item)")
     }
     

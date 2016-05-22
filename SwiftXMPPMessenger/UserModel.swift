@@ -19,4 +19,11 @@ struct UserModel {
     var nickName : String?
     var userState : UserState
     
+    init(userJID : String?, userNickName : String?, userState : UserState) {
+        jid = userJID
+        nickName = userNickName
+        self.userState = userState
+    }
+    
 }
+

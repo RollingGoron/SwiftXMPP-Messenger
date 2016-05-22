@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         XMPPManager.sharedInstance.setXMPPDelegates()
+        XMPPManager.sharedInstance.xmppManagerLoginDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,3 +30,11 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController : XMPPManagerLoginDelegate {
+    func didConnectToServer(bool: Bool, errorMessage: String?) {
+        if bool {
+            let userListController = self.storyboard?.instantiateViewControllerWithIdentifier("UserListController") as! UserListController
+            self.navigationController?.pushViewController(userListController, animated: true)
+        }
+    }
+}
