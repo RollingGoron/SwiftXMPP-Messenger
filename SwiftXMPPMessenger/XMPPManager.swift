@@ -11,10 +11,10 @@ import XMPPFramework
 
 protocol XMPPManagerLoginDelegate {
     func didConnectToServer(bool : Bool, errorMessage : String?)
+    func failedToAuthenticate(error : String)
 }
 
 protocol XMPPManagerStreamDelegate {
-    func failedToAuthenticate(error : String)
     func didRecieveMessage(message : MessageModel)
     func didRecievePresenceFor(user : UserModel)
 }
@@ -93,15 +93,21 @@ extension XMPPManager : XMPPStreamDelegate {
     }
     
     func xmppStream(sender: XMPPStream!, didNotAuthenticate error: DDXMLElement!) {
-        xmppManagerLoginDelegate?.didConnectToServer(false, errorMessage: "Could not authenticate the account")
+        xmppManagerLoginDelegate?.failedToAuthenticate("Could not authenticate")
     }
     
     func xmppStream(sender: XMPPStream!, didReceiveMessage message: XMPPMessage!) {
+        if message.body() == nil {
+            return
+        }
         
+        let body = message.body()
+        let sender = message.from().bare()
+        let timeStamp = "\(NSDate().timeIntervalSince1970)"
         
+        let messageModel = MessageModel(body: body, sender: sender, timestamp: timeStamp)
         
-        print("Recieved Message!")
-        print(message)
+        xmppManagerStreamDelegate?.didRecieveMessage(messageModel)
     }
 }
 

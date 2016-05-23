@@ -18,6 +18,7 @@ struct UserModel {
     var jid : String?
     var nickName : String?
     var userState : UserState
+    var chatHistory = [MessageModel]()
     
     init(userJID : String?, userNickName : String?, userState : UserState) {
         jid = userJID

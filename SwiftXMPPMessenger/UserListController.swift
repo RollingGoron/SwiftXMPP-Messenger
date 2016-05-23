@@ -27,17 +27,6 @@ class UserListController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -58,7 +47,15 @@ extension UserListController : UITableViewDataSource {
 }
 
 extension UserListController : UITableViewDelegate {
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let model = userList[indexPath.row]
+        
+        let chatController = self.storyboard?.instantiateViewControllerWithIdentifier("ChatController") as! ChatController
+        chatController.userModel = model
+        
+        self.navigationController?.pushViewController(chatController, animated: true)
+        
+    }
 }
 
 extension UserListController : XMPPManagerRosterDelegate {
@@ -68,9 +65,9 @@ extension UserListController : XMPPManagerRosterDelegate {
     
     func addedBuddyToList(buddyList :[UserModel]) {
         self.userList = buddyList
-        
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
         })
     }
 }
+

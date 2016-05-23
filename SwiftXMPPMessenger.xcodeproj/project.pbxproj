@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		46939E5F38773F655D37147C /* Pods_SwiftXMPPMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861B36636C4610E4745070B2 /* Pods_SwiftXMPPMessenger.framework */; };
 		F24B78FF1CED67BC00BF05B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B78FE1CED67BC00BF05B3 /* AppDelegate.swift */; };
-		F24B79011CED67BC00BF05B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B79001CED67BC00BF05B3 /* ViewController.swift */; };
+		F24B79011CED67BC00BF05B3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B79001CED67BC00BF05B3 /* LoginController.swift */; };
 		F24B79041CED67BC00BF05B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24B79021CED67BC00BF05B3 /* Main.storyboard */; };
 		F24B79071CED67BC00BF05B3 /* SwiftXMPPMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F24B79051CED67BC00BF05B3 /* SwiftXMPPMessenger.xcdatamodeld */; };
 		F24B79091CED67BC00BF05B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F24B79081CED67BC00BF05B3 /* Assets.xcassets */; };
@@ -21,6 +21,8 @@
 		F2A9664E1CF0F48900724CAA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9664D1CF0F48900724CAA /* UserModel.swift */; };
 		F2A966541CF23CE900724CAA /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A966531CF23CE900724CAA /* UserCell.swift */; };
 		F2A966561CF23D0700724CAA /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A966551CF23D0700724CAA /* UserCell.xib */; };
+		F2A9665B1CF2B2B300724CAA /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A966591CF2B2B300724CAA /* MessageCell.swift */; };
+		F2A9665C1CF2B2B300724CAA /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A9665A1CF2B2B300724CAA /* MessageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +31,7 @@
 		C38C372931BD89B550146089 /* Pods-SwiftXMPPMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftXMPPMessenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftXMPPMessenger/Pods-SwiftXMPPMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 		F24B78FB1CED67BC00BF05B3 /* SwiftXMPPMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftXMPPMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24B78FE1CED67BC00BF05B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F24B79001CED67BC00BF05B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F24B79001CED67BC00BF05B3 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F24B79031CED67BC00BF05B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F24B79061CED67BC00BF05B3 /* SwiftXMPPMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftXMPPMessenger.xcdatamodel; sourceTree = "<group>"; };
 		F24B79081CED67BC00BF05B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +44,8 @@
 		F2A9664D1CF0F48900724CAA /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F2A966531CF23CE900724CAA /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F2A966551CF23D0700724CAA /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		F2A966591CF2B2B300724CAA /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		F2A9665A1CF2B2B300724CAA /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,8 @@
 			children = (
 				F2A966531CF23CE900724CAA /* UserCell.swift */,
 				F2A966551CF23D0700724CAA /* UserCell.xib */,
+				F2A966591CF2B2B300724CAA /* MessageCell.swift */,
+				F2A9665A1CF2B2B300724CAA /* MessageCell.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -139,7 +145,7 @@
 			children = (
 				F2A966471CEED02700724CAA /* ChatController.swift */,
 				F2A966491CEED34700724CAA /* UserListController.swift */,
-				F24B79001CED67BC00BF05B3 /* ViewController.swift */,
+				F24B79001CED67BC00BF05B3 /* LoginController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2A9665C1CF2B2B300724CAA /* MessageCell.xib in Resources */,
 				F24B790C1CED67BC00BF05B3 /* LaunchScreen.storyboard in Resources */,
 				F2A966561CF23D0700724CAA /* UserCell.xib in Resources */,
 				F24B79091CED67BC00BF05B3 /* Assets.xcassets in Resources */,
@@ -268,12 +275,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2A9664A1CEED34700724CAA /* UserListController.swift in Sources */,
+				F2A9665B1CF2B2B300724CAA /* MessageCell.swift in Sources */,
 				F24B79141CED6D0D00BF05B3 /* XMPPManager.swift in Sources */,
 				F2A9664E1CF0F48900724CAA /* UserModel.swift in Sources */,
 				F2A9664C1CF0F47B00724CAA /* MessageModel.swift in Sources */,
 				F24B79071CED67BC00BF05B3 /* SwiftXMPPMessenger.xcdatamodeld in Sources */,
 				F2A966541CF23CE900724CAA /* UserCell.swift in Sources */,
-				F24B79011CED67BC00BF05B3 /* ViewController.swift in Sources */,
+				F24B79011CED67BC00BF05B3 /* LoginController.swift in Sources */,
 				F2A966481CEED02700724CAA /* ChatController.swift in Sources */,
 				F24B78FF1CED67BC00BF05B3 /* AppDelegate.swift in Sources */,
 			);

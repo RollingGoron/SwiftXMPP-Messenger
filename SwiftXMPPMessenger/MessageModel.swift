@@ -12,4 +12,10 @@ struct MessageModel {
     var messageBody : String?
     var messageSender : String?
     var messageTimeStamp : String?
+    
+    init(body : String?, sender : String?, timestamp : String?) {
+        messageBody = body
+        messageSender = sender
+        messageTimeStamp = timestamp
+    }
 }

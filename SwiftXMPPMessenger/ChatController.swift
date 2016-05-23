@@ -10,12 +10,28 @@ import UIKit
 
 class ChatController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toolbarBottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var chatTextField: UITextField!
+    
+    var userModel : UserModel? {
+        didSet {
+            print("Did Set!")
+            if userModel?.chatHistory.count == 0 {
+                return
+            } else {
+                self.tableView.reloadData()
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.dataSource = self
+        self.tableView.estimatedRowHeight = 44
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.registerNib(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
+        XMPPManager.sharedInstance.xmppManagerStreamDelegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -26,16 +42,37 @@ class ChatController: UIViewController {
     
     @IBAction func sendMessageAction(sender: AnyObject) {
     }
+}
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension ChatController : UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userModel!.chatHistory.count
     }
-    */
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let messageModel = userModel?.chatHistory[indexPath.row]
+        
+        let messageCell = tableView.dequeueReusableCellWithIdentifier("MessageCell") as! MessageCell
+        
+        messageCell.from.text = messageModel?.messageSender
+        messageCell.message.text = messageModel?.messageBody
+        
+        return messageCell
+    }
+}
 
+extension ChatController : XMPPManagerStreamDelegate {
+
+    func didRecieveMessage(message : MessageModel) {
+        userModel?.chatHistory.append(message)
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
+    }
+    
+    func didRecievePresenceFor(user : UserModel) {
+        
+    }
+    
 }
