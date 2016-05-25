@@ -43,14 +43,3 @@ extension LoginController : XMPPManagerLoginDelegate {
         }
     }
 }
-
-extension UIViewController {
-    func presentAlertController(title: String?, message: String?, actionText: String, completion: (() -> Void)?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: actionText, style: .Default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        self.presentViewController(alertController, animated: true, completion:completion)
-    }
-}

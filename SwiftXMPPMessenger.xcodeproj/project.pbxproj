@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		46939E5F38773F655D37147C /* Pods_SwiftXMPPMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861B36636C4610E4745070B2 /* Pods_SwiftXMPPMessenger.framework */; };
+		F23011671CF4A9A7004B23BA /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23011661CF4A9A7004B23BA /* UIViewController+Alerts.swift */; };
 		F24B78FF1CED67BC00BF05B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B78FE1CED67BC00BF05B3 /* AppDelegate.swift */; };
 		F24B79011CED67BC00BF05B3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B79001CED67BC00BF05B3 /* LoginController.swift */; };
 		F24B79041CED67BC00BF05B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24B79021CED67BC00BF05B3 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		66EF79B598CB47CA62943E26 /* Pods-SwiftXMPPMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftXMPPMessenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftXMPPMessenger/Pods-SwiftXMPPMessenger.release.xcconfig"; sourceTree = "<group>"; };
 		861B36636C4610E4745070B2 /* Pods_SwiftXMPPMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftXMPPMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38C372931BD89B550146089 /* Pods-SwiftXMPPMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftXMPPMessenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftXMPPMessenger/Pods-SwiftXMPPMessenger.debug.xcconfig"; sourceTree = "<group>"; };
+		F23011661CF4A9A7004B23BA /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		F24B78FB1CED67BC00BF05B3 /* SwiftXMPPMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftXMPPMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24B78FE1CED67BC00BF05B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F24B79001CED67BC00BF05B3 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				F24B78FE1CED67BC00BF05B3 /* AppDelegate.swift */,
+				F23011661CF4A9A7004B23BA /* UIViewController+Alerts.swift */,
 				F2A966521CF23CC400724CAA /* Controllers */,
 				F2A966511CF23CB300724CAA /* Xibs */,
 				F2A966501CF23CAD00724CAA /* Models */,
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2A9664A1CEED34700724CAA /* UserListController.swift in Sources */,
+				F23011671CF4A9A7004B23BA /* UIViewController+Alerts.swift in Sources */,
 				F2A9665B1CF2B2B300724CAA /* MessageCell.swift in Sources */,
 				F24B79141CED6D0D00BF05B3 /* XMPPManager.swift in Sources */,
 				F2A9664E1CF0F48900724CAA /* UserModel.swift in Sources */,

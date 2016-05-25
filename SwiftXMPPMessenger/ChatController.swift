@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XMPPFramework
 
 class ChatController: UIViewController {
 
@@ -22,6 +23,7 @@ class ChatController: UIViewController {
             } else {
                 self.tableView.reloadData()
             }
+            
         }
     }
 
@@ -41,12 +43,27 @@ class ChatController: UIViewController {
     }
     
     @IBAction func sendMessageAction(sender: AnyObject) {
+        
+        print("Sending Chat!")
+        
+        let messageString = chatTextField.text
+        
+        if messageString?.characters.count > 0
+        {
+            let body = DDXMLElement(name: "body", stringValue: messageString)
+            
+            let message = DDXMLElement(name: "message")
+            message.addAttributeWithName("type", stringValue: "chat")
+            message.addAttributeWithName("to", stringValue: userModel?.jid)
+            message.addChild(body)
+            XMPPManager.sharedInstance.xmppStream?.sendElement(message)
+        }
     }
 }
 
 extension ChatController : UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userModel!.chatHistory.count
+        return userModel?.chatHistory.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
