@@ -21,13 +21,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXn-FR-A81">
                                 <rect key="frame" x="15" y="196" width="88" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jq-ZD-fu9">
                                 <rect key="frame" x="20" y="235" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfk-nU-1v2">
@@ -125,12 +125,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVb-Vc-4gn">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Item" id="J7z-Sk-NxF"/>
-                                </items>
-                            </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsG-wp-VVs">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -139,7 +133,7 @@
                                             <rect key="frame" x="20" y="7" width="314" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                         </textField>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="NK3-qe-YnF">
@@ -157,22 +151,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QsG-wp-VVs" firstAttribute="top" secondItem="VUv-hc-KRx" secondAttribute="bottom" id="8uL-bp-nJd"/>
-                            <constraint firstItem="rVb-Vc-4gn" firstAttribute="leading" secondItem="QsG-wp-VVs" secondAttribute="leading" id="CyK-bu-iDk"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QsG-wp-VVs" secondAttribute="trailing" constant="-20" id="Eho-Po-ox5"/>
-                            <constraint firstItem="VUv-hc-KRx" firstAttribute="leading" secondItem="QRc-UU-mrR" secondAttribute="leading" id="Fs7-9p-xe2"/>
-                            <constraint firstItem="VUv-hc-KRx" firstAttribute="top" secondItem="QRc-UU-mrR" secondAttribute="top" id="IKh-UF-LEu"/>
-                            <constraint firstItem="QsG-wp-VVs" firstAttribute="leading" secondItem="QRc-UU-mrR" secondAttribute="leadingMargin" constant="-20" id="c8m-0a-vsS"/>
-                            <constraint firstItem="6Ce-fW-lfE" firstAttribute="top" secondItem="rVb-Vc-4gn" secondAttribute="bottom" id="d0g-Tr-XJs"/>
-                            <constraint firstItem="rVb-Vc-4gn" firstAttribute="trailing" secondItem="QsG-wp-VVs" secondAttribute="trailing" id="hPE-0a-4dy"/>
-                            <constraint firstItem="VUv-hc-KRx" firstAttribute="bottom" secondItem="6Ce-fW-lfE" secondAttribute="top" constant="-44" id="pDp-rq-rwV"/>
-                            <constraint firstAttribute="trailing" secondItem="VUv-hc-KRx" secondAttribute="trailing" id="yEy-ZZ-a1a"/>
+                            <constraint firstItem="QsG-wp-VVs" firstAttribute="trailing" secondItem="VUv-hc-KRx" secondAttribute="trailing" id="3db-Sm-2pQ"/>
+                            <constraint firstItem="QsG-wp-VVs" firstAttribute="top" secondItem="VUv-hc-KRx" secondAttribute="bottom" id="5Rw-HH-Rra"/>
+                            <constraint firstItem="VUv-hc-KRx" firstAttribute="top" secondItem="vip-pg-RTd" secondAttribute="bottom" constant="-20" id="WdI-UR-tlp"/>
+                            <constraint firstItem="QsG-wp-VVs" firstAttribute="leading" secondItem="VUv-hc-KRx" secondAttribute="leading" id="XhR-mB-eo7"/>
+                            <constraint firstItem="VUv-hc-KRx" firstAttribute="leading" secondItem="QRc-UU-mrR" secondAttribute="leadingMargin" constant="-20" id="YGQ-ev-D3f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VUv-hc-KRx" secondAttribute="trailing" constant="-20" id="Zv3-ir-TIJ"/>
+                            <constraint firstItem="6Ce-fW-lfE" firstAttribute="top" secondItem="QsG-wp-VVs" secondAttribute="bottom" id="wFI-7L-yEX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="chatTextField" destination="EYZ-Fu-oQx" id="BHe-Fh-Bl5"/>
                         <outlet property="tableView" destination="VUv-hc-KRx" id="QHF-lG-Uay"/>
-                        <outlet property="toolbarBottomConstraint" destination="d0g-Tr-XJs" id="jOA-Ez-N3J"/>
+                        <outlet property="toolbarBottomConstraint" destination="wFI-7L-yEX" id="38Z-oO-xof"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aC4-VQ-wuA" userLabel="First Responder" sceneMemberID="firstResponder"/>

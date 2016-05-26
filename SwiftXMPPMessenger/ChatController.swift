@@ -15,6 +15,8 @@ class ChatController: UIViewController {
     @IBOutlet weak var toolbarBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatTextField: UITextField!
     
+    var toolBarInitialValue : CGFloat?
+    
     var userModel : UserModel? {
         didSet {
             print("Did Set!")
@@ -42,9 +44,37 @@ class ChatController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func sendMessageAction(sender: AnyObject) {
+    override func viewWillAppear(animated: Bool) {
+        self.toolBarInitialValue = toolbarBottomConstraint.constant
+        self.registerForKeyboardNotifications()
+    }
+    
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification : NSNotification) {
+        let info = notification.userInfo!
+        let keyboardFrame : CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
         
-        print("Sending Chat!")
+        UIView.animateWithDuration(duration) { 
+            self.toolbarBottomConstraint.constant = keyboardFrame.size.height
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func keyboardWillHide(notification : NSNotification) {
+        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
+        
+        UIView.animateWithDuration(duration) {
+            self.toolbarBottomConstraint.constant = self.toolBarInitialValue!
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @IBAction func sendMessageAction(sender: AnyObject) {
         
         let messageString = chatTextField.text
         
@@ -52,11 +82,21 @@ class ChatController: UIViewController {
         {
             let body = DDXMLElement(name: "body", stringValue: messageString)
             
-            let message = DDXMLElement(name: "message")
-            message.addAttributeWithName("type", stringValue: "chat")
-            message.addAttributeWithName("to", stringValue: userModel?.jid)
-            message.addChild(body)
-            XMPPManager.sharedInstance.xmppStream?.sendElement(message)
+            let messageElement = DDXMLElement(name: "message")
+            messageElement.addAttributeWithName("type", stringValue: "chat")
+            messageElement.addAttributeWithName("to", stringValue: userModel?.jid)
+            messageElement.addChild(body)
+            XMPPManager.sharedInstance.xmppStream?.sendElement(messageElement)
+            chatTextField.text = ""
+            
+            let message = MessageModel(body: messageString, sender: "Me", timestamp: "\(NSDate().timeIntervalSince1970)")
+            userModel?.chatHistory.append(message)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: ((self.userModel?.chatHistory.count)! - 1), inSection: 0), atScrollPosition: .Bottom, animated: true)
+            })
+            
         }
     }
 }
@@ -85,6 +125,7 @@ extension ChatController : XMPPManagerStreamDelegate {
         
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: ((self.userModel?.chatHistory.count)! - 1), inSection: 0), atScrollPosition: .Bottom, animated: true)
         })
     }
     
