@@ -15,13 +15,14 @@ protocol XMPPManagerLoginDelegate {
 }
 
 protocol XMPPManagerStreamDelegate {
-    func didRecieveMessage(message : MessageModel)
-    func didRecievePresenceFor(user : UserModel)
+    func didReceiveMessage(message : MessageModel)
+    func didReceivePresence(presence : UserState, from : UserModel)
 }
 
 protocol XMPPManagerRosterDelegate {
-    func didRecieveBuddy(user : UserModel)
+    func didReceivePresence(presence : UserState, from : UserModel)
     func addedBuddyToList(buddyList :[UserModel])
+    
 }
 
 class XMPPManager: NSObject {
@@ -107,7 +108,7 @@ extension XMPPManager : XMPPStreamDelegate {
         
         let messageModel = MessageModel(body: body, sender: sender, timestamp: timeStamp)
         
-        xmppManagerStreamDelegate?.didRecieveMessage(messageModel)
+        xmppManagerStreamDelegate?.didReceiveMessage(messageModel)
     }
 }
 

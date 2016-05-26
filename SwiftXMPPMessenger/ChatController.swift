@@ -120,7 +120,7 @@ extension ChatController : UITableViewDataSource {
 
 extension ChatController : XMPPManagerStreamDelegate {
 
-    func didRecieveMessage(message : MessageModel) {
+    func didReceiveMessage(message : MessageModel) {
         userModel?.chatHistory.append(message)
         
         dispatch_async(dispatch_get_main_queue(), {
@@ -129,7 +129,7 @@ extension ChatController : XMPPManagerStreamDelegate {
         })
     }
     
-    func didRecievePresenceFor(user : UserModel) {
+    func didReceivePresence(presence : UserState, from : UserModel) {
         
     }
     

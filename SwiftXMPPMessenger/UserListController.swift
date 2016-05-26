@@ -59,7 +59,8 @@ extension UserListController : UITableViewDelegate {
 }
 
 extension UserListController : XMPPManagerRosterDelegate {
-    func didRecieveBuddy(user : UserModel) {
+    
+    func didReceivePresence(presence : UserState, from : UserModel) {
         
     }
     
