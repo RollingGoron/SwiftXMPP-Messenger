@@ -15,16 +15,14 @@ enum UserState {
 }
 
 struct UserModel {
-    var jid : String?
-    var nickName : String?
-    var userState : UserState
+    let jid : String?
+    let nickName : String?
+    var userState : UserState?
     var chatHistory = [MessageModel]()
     
-    init(userJID : String?, userNickName : String?, userState : UserState) {
+    init(userJID : String?, userNickName : String?) {
         jid = userJID
         nickName = userNickName
-        self.userState = userState
     }
-    
 }
 

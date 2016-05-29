@@ -20,7 +20,7 @@ protocol XMPPManagerStreamDelegate {
 }
 
 protocol XMPPManagerRosterDelegate {
-    func didReceivePresence(presence : UserState, from : UserModel)
+    func didReceivePresence(presence : UserState, from : String)
     func addedBuddyToList(buddyList :[UserModel])
     
 }
@@ -87,9 +87,6 @@ extension XMPPManager : XMPPStreamDelegate {
     
     func xmppStreamDidAuthenticate(sender: XMPPStream!) {
         print("The XMPP Authenticated")
-        let presence = XMPPPresence(type: "Available")
-        xmppStream?.sendElement(presence)
-        xmppRoster?.fetchRoster()
         xmppManagerLoginDelegate?.didConnectToServer(true, errorMessage: nil)
     }
     
@@ -110,6 +107,18 @@ extension XMPPManager : XMPPStreamDelegate {
         
         xmppManagerStreamDelegate?.didReceiveMessage(messageModel)
     }
+    
+    func xmppStream(sender: XMPPStream!, didReceivePresence presence: XMPPPresence!) {
+        let userState : UserState
+        
+        if presence.type() == "available" {
+            userState = .Available
+        } else {
+            userState = .Unavailable
+        }
+        
+        xmppManagerRosterDelegate?.didReceivePresence(userState, from: presence.from().bare())
+    }
 }
 
 extension XMPPManager : XMPPRosterDelegate {
@@ -118,15 +127,12 @@ extension XMPPManager : XMPPRosterDelegate {
         let name = item.attributeForName("name").stringValue()
         let jid = item.attributeForName("jid").stringValue()
         
-        print("\(name), \(jid)")
-        
-        let userModel = UserModel(userJID: name, userNickName: jid, userState: UserState.Unavailable)
-        
+        var userModel = UserModel(userJID: name, userNickName: jid)
+        userModel.userState = UserState.Unavailable
         userListArray.append(userModel)
         
         xmppManagerRosterDelegate?.addedBuddyToList(userListArray)
-        
-        print("Recieved Roster Item \(item)")
+
     }
     
     func xmppRoster(sender: XMPPRoster!, didReceivePresenceSubscriptionRequest presence: XMPPPresence!) {

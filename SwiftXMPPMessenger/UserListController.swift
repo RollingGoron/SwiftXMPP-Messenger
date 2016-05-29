@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XMPPFramework
 
 class UserListController: UIViewController {
 
@@ -21,7 +22,12 @@ class UserListController: UIViewController {
         XMPPManager.sharedInstance.xmppManagerRosterDelegate = self
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        XMPPManager.sharedInstance.xmppRoster?.fetchRoster()
+        let presence = XMPPPresence(type: "Available")
+        XMPPManager.sharedInstance.xmppStream?.sendElement(presence)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,6 +47,12 @@ extension UserListController : UITableViewDataSource {
         
         cell.nickName.text = model.nickName
         
+        if model.userState == .Available {
+            cell.presence.text = "Available"
+        } else if model.userState == .Unavailable {
+            cell.presence.text = "Unavailable"
+        }
+        
         return cell
         
     }
@@ -48,7 +60,7 @@ extension UserListController : UITableViewDataSource {
 
 extension UserListController : UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let model = userList[indexPath.row]
+        let model = self.userList[indexPath.row]
         
         let chatController = self.storyboard?.instantiateViewControllerWithIdentifier("ChatController") as! ChatController
         chatController.userModel = model
@@ -60,8 +72,18 @@ extension UserListController : UITableViewDelegate {
 
 extension UserListController : XMPPManagerRosterDelegate {
     
-    func didReceivePresence(presence : UserState, from : UserModel) {
-        
+    func didReceivePresence(presence : UserState, from : String) {
+        for x in 0..<self.userList.count {
+            var model = self.userList[x]
+            print("Found JID in Userlist")
+            if model.jid == from {
+                model.userState = presence
+                self.userList[x] = model
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
     }
     
     func addedBuddyToList(buddyList :[UserModel]) {
