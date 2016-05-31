@@ -41,7 +41,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv8-FF-JXN">
-                                <rect key="frame" x="98" y="314" width="404" height="21"/>
+                                <rect key="frame" x="98" y="305" width="404" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginToXMPP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="02h-cS-SHl"/>
@@ -54,14 +54,13 @@
                             <constraint firstItem="4jq-ZD-fu9" firstAttribute="centerY" secondItem="ReM-Pn-7qF" secondAttribute="centerY" id="Hm2-Qw-zW3"/>
                             <constraint firstItem="jfk-nU-1v2" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="I6M-AZ-WtH"/>
                             <constraint firstItem="sXn-FR-A81" firstAttribute="centerY" secondItem="jfk-nU-1v2" secondAttribute="centerY" id="Iol-hT-TTg"/>
-                            <constraint firstItem="kv8-FF-JXN" firstAttribute="top" secondItem="ReM-Pn-7qF" secondAttribute="bottom" constant="53" id="KwV-n8-RFQ"/>
                             <constraint firstItem="jfk-nU-1v2" firstAttribute="leading" secondItem="ReM-Pn-7qF" secondAttribute="leading" id="P7I-Ov-LYj"/>
                             <constraint firstItem="ReM-Pn-7qF" firstAttribute="leading" secondItem="4jq-ZD-fu9" secondAttribute="trailing" constant="8" symbolic="YES" id="SdD-Ds-g82"/>
                             <constraint firstItem="4jq-ZD-fu9" firstAttribute="top" secondItem="sXn-FR-A81" secondAttribute="bottom" constant="18" id="UNG-eS-6fL"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kv8-FF-JXN" secondAttribute="bottom" constant="265" id="Usc-ok-9ec"/>
                             <constraint firstItem="4jq-ZD-fu9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Xxq-S7-KNU"/>
                             <constraint firstItem="jfk-nU-1v2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="128" id="Znq-1N-JIK"/>
                             <constraint firstItem="kv8-FF-JXN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="78" id="fpb-6U-6lI"/>
+                            <constraint firstItem="kv8-FF-JXN" firstAttribute="top" secondItem="ReM-Pn-7qF" secondAttribute="bottom" constant="44" id="gCc-Jn-Rhb"/>
                             <constraint firstItem="jfk-nU-1v2" firstAttribute="leading" secondItem="sXn-FR-A81" secondAttribute="trailing" constant="8" symbolic="YES" id="j3r-6x-vaB"/>
                             <constraint firstItem="jfk-nU-1v2" firstAttribute="trailing" secondItem="ReM-Pn-7qF" secondAttribute="trailing" id="pJN-6R-Z81"/>
                         </constraints>
@@ -121,8 +120,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VUv-hc-KRx">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VUv-hc-KRx">
+                                <rect key="frame" x="0.0" y="-44" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsG-wp-VVs">
@@ -153,7 +152,7 @@
                         <constraints>
                             <constraint firstItem="QsG-wp-VVs" firstAttribute="trailing" secondItem="VUv-hc-KRx" secondAttribute="trailing" id="3db-Sm-2pQ"/>
                             <constraint firstItem="QsG-wp-VVs" firstAttribute="top" secondItem="VUv-hc-KRx" secondAttribute="bottom" id="5Rw-HH-Rra"/>
-                            <constraint firstItem="VUv-hc-KRx" firstAttribute="top" secondItem="vip-pg-RTd" secondAttribute="bottom" constant="-20" id="WdI-UR-tlp"/>
+                            <constraint firstItem="VUv-hc-KRx" firstAttribute="top" secondItem="vip-pg-RTd" secondAttribute="bottom" constant="-64" id="WdI-UR-tlp"/>
                             <constraint firstItem="QsG-wp-VVs" firstAttribute="leading" secondItem="VUv-hc-KRx" secondAttribute="leading" id="XhR-mB-eo7"/>
                             <constraint firstItem="VUv-hc-KRx" firstAttribute="leading" secondItem="QRc-UU-mrR" secondAttribute="leadingMargin" constant="-20" id="YGQ-ev-D3f"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VUv-hc-KRx" secondAttribute="trailing" constant="-20" id="Zv3-ir-TIJ"/>

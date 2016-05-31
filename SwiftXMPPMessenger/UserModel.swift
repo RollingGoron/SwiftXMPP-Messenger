@@ -14,7 +14,7 @@ enum UserState {
     case Away
 }
 
-struct UserModel {
+class UserModel : NSObject  {
     let jid : String?
     let nickName : String?
     var userState : UserState?

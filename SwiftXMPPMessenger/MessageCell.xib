@@ -40,7 +40,7 @@
                     <constraint firstAttribute="leadingMargin" secondItem="OvB-MX-Pzo" secondAttribute="leading" id="tDL-1E-t7x"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.47256835376296108" green="0.65816405877777784" blue="0.25966635025925905" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.47256835376296108" green="0.65816405877777784" blue="0.4579302391481479" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="from" destination="Qvs-4b-j04" id="l0S-2R-f30"/>
                 <outlet property="message" destination="OvB-MX-Pzo" id="heo-34-qsh"/>

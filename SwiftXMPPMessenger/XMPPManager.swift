@@ -127,7 +127,7 @@ extension XMPPManager : XMPPRosterDelegate {
         let name = item.attributeForName("name").stringValue()
         let jid = item.attributeForName("jid").stringValue()
         
-        var userModel = UserModel(userJID: name, userNickName: jid)
+        let userModel = UserModel(userJID: name, userNickName: jid)
         userModel.userState = UserState.Unavailable
         userListArray.append(userModel)
         

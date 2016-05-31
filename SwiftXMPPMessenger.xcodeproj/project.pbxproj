@@ -24,6 +24,8 @@
 		F2A966561CF23D0700724CAA /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A966551CF23D0700724CAA /* UserCell.xib */; };
 		F2A9665B1CF2B2B300724CAA /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A966591CF2B2B300724CAA /* MessageCell.swift */; };
 		F2A9665C1CF2B2B300724CAA /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A9665A1CF2B2B300724CAA /* MessageCell.xib */; };
+		F2F3C42F1CFE0BD3004E129B /* ReceivedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3C42D1CFE0BD3004E129B /* ReceivedCell.swift */; };
+		F2F3C4301CFE0BD3004E129B /* ReceivedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F3C42E1CFE0BD3004E129B /* ReceivedCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		F2A966551CF23D0700724CAA /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		F2A966591CF2B2B300724CAA /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		F2A9665A1CF2B2B300724CAA /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		F2F3C42D1CFE0BD3004E129B /* ReceivedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedCell.swift; sourceTree = "<group>"; };
+		F2F3C42E1CFE0BD3004E129B /* ReceivedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceivedCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 				F2A966551CF23D0700724CAA /* UserCell.xib */,
 				F2A966591CF2B2B300724CAA /* MessageCell.swift */,
 				F2A9665A1CF2B2B300724CAA /* MessageCell.xib */,
+				F2F3C42D1CFE0BD3004E129B /* ReceivedCell.swift */,
+				F2F3C42E1CFE0BD3004E129B /* ReceivedCell.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 				F24B790C1CED67BC00BF05B3 /* LaunchScreen.storyboard in Resources */,
 				F2A966561CF23D0700724CAA /* UserCell.xib in Resources */,
 				F24B79091CED67BC00BF05B3 /* Assets.xcassets in Resources */,
+				F2F3C4301CFE0BD3004E129B /* ReceivedCell.xib in Resources */,
 				F24B79041CED67BC00BF05B3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2F3C42F1CFE0BD3004E129B /* ReceivedCell.swift in Sources */,
 				F2A9664A1CEED34700724CAA /* UserListController.swift in Sources */,
 				F23011671CF4A9A7004B23BA /* UIViewController+Alerts.swift in Sources */,
 				F2A9665B1CF2B2B300724CAA /* MessageCell.swift in Sources */,

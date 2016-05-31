@@ -10,35 +10,42 @@ import UIKit
 import XMPPFramework
 
 class ChatController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toolbarBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatTextField: UITextField!
     
     var toolBarInitialValue : CGFloat?
+    var messages = [MessageModel]()
     
     var userModel : UserModel? {
         didSet {
-            print("Did Set!")
             if userModel?.chatHistory.count == 0 {
                 return
             } else {
-                self.tableView.reloadData()
+                if let unwrappedMessages = userModel?.chatHistory {
+                    messages = unwrappedMessages
+                }
             }
             
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.automaticallyAdjustsScrollViewInsets = true;
+
         self.tableView.dataSource = self
         self.tableView.estimatedRowHeight = 44
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.registerNib(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
+        self.tableView.registerNib(UINib(nibName: "ReceivedCell", bundle: nil), forCellReuseIdentifier: "ReceivedCell")
         XMPPManager.sharedInstance.xmppManagerStreamDelegate = self
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,6 +54,10 @@ class ChatController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.toolBarInitialValue = toolbarBottomConstraint.constant
         self.registerForKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        userModel?.chatHistory = messages
     }
     
     func registerForKeyboardNotifications() {
@@ -59,7 +70,7 @@ class ChatController: UIViewController {
         let keyboardFrame : CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
         
-        UIView.animateWithDuration(duration) { 
+        UIView.animateWithDuration(duration) {
             self.toolbarBottomConstraint.constant = keyboardFrame.size.height
             self.view.layoutIfNeeded()
         }
@@ -90,11 +101,11 @@ class ChatController: UIViewController {
             chatTextField.text = ""
             
             let message = MessageModel(body: messageString, sender: "Me", timestamp: "\(NSDate().timeIntervalSince1970)")
-            userModel?.chatHistory.append(message)
+            messages.append(message)
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
-                self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: ((self.userModel?.chatHistory.count)! - 1), inSection: 0), atScrollPosition: .Bottom, animated: true)
+                self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: (self.messages.count - 1), inSection: 0), atScrollPosition: .Bottom, animated: true)
             })
             
         }
@@ -103,29 +114,34 @@ class ChatController: UIViewController {
 
 extension ChatController : UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userModel?.chatHistory.count ?? 0
+        return messages.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let messageModel = userModel?.chatHistory[indexPath.row]
+        let messageModel = messages[indexPath.row]
         
-        let messageCell = tableView.dequeueReusableCellWithIdentifier("MessageCell") as! MessageCell
-        
-        messageCell.from.text = messageModel?.messageSender
-        messageCell.message.text = messageModel?.messageBody
-        
-        return messageCell
+        if messageModel.messageSender != "Me" {
+            let messageCell = tableView.dequeueReusableCellWithIdentifier("MessageCell") as! MessageCell
+            messageCell.from.text = messageModel.messageSender
+            messageCell.message.text = messageModel.messageBody
+            return messageCell
+        } else {
+            let receivedCell = tableView.dequeueReusableCellWithIdentifier("ReceivedCell") as! ReceivedCell
+            receivedCell.userName.text = messageModel.messageSender
+            receivedCell.message.text = messageModel.messageBody
+            return receivedCell
+        }
     }
 }
 
 extension ChatController : XMPPManagerStreamDelegate {
-
+    
     func didReceiveMessage(message : MessageModel) {
-        userModel?.chatHistory.append(message)
+        messages.append(message)
         
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
-            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: ((self.userModel?.chatHistory.count)! - 1), inSection: 0), atScrollPosition: .Bottom, animated: true)
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: (self.messages.count - 1), inSection: 0), atScrollPosition: .Bottom, animated: true)
         })
     }
     

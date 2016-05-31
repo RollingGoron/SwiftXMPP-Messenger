@@ -73,12 +73,10 @@ extension UserListController : UITableViewDelegate {
 extension UserListController : XMPPManagerRosterDelegate {
     
     func didReceivePresence(presence : UserState, from : String) {
-        for x in 0..<self.userList.count {
-            var model = self.userList[x]
+        for model in self.userList {
             print("Found JID in Userlist")
             if model.jid == from {
                 model.userState = presence
-                self.userList[x] = model
             }
         }
         dispatch_async(dispatch_get_main_queue(), {
